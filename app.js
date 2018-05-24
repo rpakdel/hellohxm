@@ -25,6 +25,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 
+app.get("/api/v1/add/:p/:q", (req, res) => {
+  let p = parseFloat(req.params.p)
+  let q = parseFloat(req.params.q)
+
+  res.send(`${p + q}`)
+})
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
